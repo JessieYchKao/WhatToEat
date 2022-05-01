@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RandomGeneratorComponent } from './random-generator/random-generator.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '**', component: RandomGeneratorComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
