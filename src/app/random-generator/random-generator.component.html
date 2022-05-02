@@ -1,6 +1,49 @@
 <div class="main-content">
-    <div class="flex-row justify-content-center">
-        <div class="big-circle"></div>
+    <div class="flex-column align-items-center">
+        <div class="big-circle" [@storePic]="filterOpen"></div>
+        <div class="store flex-column align-items-center" [@storeInfo]="filterOpen">
+            <div class="store-name">Store Name</div>
+            <div class="store-info">Store Info</div>
+        </div>
+        <div class="function-btn flex-row" [@functionBtn]="filterOpen">
+            <div class="btn-responsive"><i class="fa fa-trash"></i></div>
+            <div class="btn-responsive"><i class="fa fa-random"></i></div>
+            <div class="btn-responsive" (click)="toggle()"><i class="fa fa-filter"></i></div>
+        </div>
+        <div class="filter-options flex-column align-items-center">
+            <div class="option flex-row align-items-center">
+                <div class="option-info flex-column">
+                   <div class="option-name">Option Name</div>
+                   <div class="option-choice">Option Choice</div>
+                </div>
+                <div class="btn-small-responsive" (click)="openDialog()"><i class="fa fa-random"></i></div>
+            </div>
+            <div class="option flex-row align-items-center">
+                <div class="option-info flex-column">
+                    <div class="option-name">Option Name</div>
+                    <div class="option-choice">Option Choice</div>
+                 </div>
+                <div class="btn-small-responsive"><i class="fa fa-random"></i></div>
+            </div>
+            <div class="option flex-row align-items-center">
+                <div class="option-info flex-column">
+                    <div class="option-name">Option Name</div>
+                    <div class="option-choice">Option Choice</div>
+                 </div>
+                <div class="btn-small-responsive"><i class="fa fa-random"></i></div>
+            </div>
+            <div class="option flex-row align-items-center">
+                <div class="option-info flex-column">
+                    <div class="option-name">Option Name</div>
+                    <div class="option-choice">Option Choice</div>
+                 </div>
+                <div class="btn-small-responsive"><i class="fa fa-random"></i></div>
+            </div>
+        </div>
     </div>
 
 </div>
+
+<app-dialog [visible]="dialogVisible">
+    <div class="title">aaa</div>
+</app-dialog>
