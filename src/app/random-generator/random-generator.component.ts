@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, state, transition, animate, group } from '@angular/animations';
+import { DialogContent } from '../interface/dialogContent';
+import { Option, OptionType, OtherOptions } from '../interface/option';
+import { FoodServiceService } from '../services/food-service.service';
 
 @Component({
   selector: 'app-random-generator',
@@ -28,19 +31,38 @@ import { trigger, style, state, transition, animate, group } from '@angular/anim
 })
 export class RandomGeneratorComponent implements OnInit {
   filterOpen: string = 'expand';
-  dialogVisible: boolean = false;
+  dialogContent: DialogContent = { 
+    title: '', 
+    visible: false,
+    type: {
+      name: '',
+      type: OptionType.mainCategory,
+      choice: OtherOptions.all
+    } 
+  };
 
-  constructor() { }
+  foodOptions: Option[] = [];
+
+  constructor(
+    private foodService: FoodServiceService
+  ) { }
 
   ngOnInit(): void {
+    this.getOptions();
+  }
+
+  getOptions() {
+    this.foodService.getFoodOptions().subscribe(res => {
+      this.foodOptions = res;
+    })
   }
 
   toggle() {
     this.filterOpen = this.filterOpen === 'close' ? 'expand' : 'close';
   }
 
-  openDialog() {
-    this.dialogVisible = true;
+  openDialog(option: Option) {
+    this.dialogContent.visible = true;
+    this.dialogContent.type = option;
   }
-
 }
