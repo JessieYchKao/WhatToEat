@@ -1,3 +1,6 @@
-<div [@dialog] *ngIf="visible" class="dialog">
-    <div class="title">Select One</div>
+<div class="modal" *ngIf="dialogContent.visible" (clickOutside)="close()">
+    <div class="dialog" [@dialog]>
+        <div class="title">{{dialogContent.type.name}}</div>
+        <ng-content></ng-content>
+    </div>
 </div>

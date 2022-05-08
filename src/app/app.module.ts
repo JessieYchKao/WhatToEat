@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RandomGeneratorComponent } from './random-generator/random-generator.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { ClickOutsideDirective } from './directive/click-outside.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RandomGeneratorComponent,
-    DialogComponent
+    DialogComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { trigger, style, state, transition, animate, group } from '@angular/animations';
+import { trigger, style, transition, animate, } from '@angular/animations';
+import { DialogContent } from '../interface/dialogContent';
+import { OptionType, OtherOptions } from '../interface/option';
 
 @Component({
   selector: 'app-dialog',
@@ -8,7 +10,7 @@ import { trigger, style, state, transition, animate, group } from '@angular/anim
   animations: [
     trigger('dialog', [
       transition('void => *', [
-        style({ bottom: '0' }),
+        style({ bottom: '-100rem' }),
         animate('200ms ease-in')
       ]),
       transition('* => void', [
@@ -19,7 +21,16 @@ import { trigger, style, state, transition, animate, group } from '@angular/anim
 })
 export class DialogComponent implements OnInit {
 
-  @Input() visible: boolean = false;
+  @Input() dialogContent: DialogContent = {
+    title: '',
+    visible: false,
+    type: {
+      name: '',
+      type: OptionType.mainCategory,
+      choice: OtherOptions.all
+    }
+  };
+  @Input() title: string = '';
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
@@ -28,8 +39,7 @@ export class DialogComponent implements OnInit {
   }
 
   close() {
-    this.visible = false;
-    this.visibleChange.emit(this.visible);
+    this.dialogContent.visible = false;
   }
 
 }
