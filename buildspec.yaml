@@ -14,4 +14,4 @@ phases:
   post_build:
     commands:
       - echo "Upload files to the S3 bucket"
-      - aws s3 sync dist/whatToEat/ s3://what-to-eat-angular --delete
+      - aws s3 sync dist/what-to-eat/ s3://what-to-eat-angular --delete
