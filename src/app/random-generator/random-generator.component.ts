@@ -4,6 +4,7 @@ import { DialogContent } from '../interface/dialogContent';
 import { GeneratorPara, MainCategory, Option, OptionType, OtherOptions } from '../interface/option';
 import { FoodServiceService } from '../services/food-service.service';
 import { fromEvent, Observable, Subscription } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-random-generator',
@@ -48,7 +49,8 @@ export class RandomGeneratorComponent implements OnInit {
   result: any;
 
   constructor(
-    private foodService: FoodServiceService
+    private foodService: FoodServiceService,
+    private _sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -83,14 +85,14 @@ export class RandomGeneratorComponent implements OnInit {
   getPhoto(operator: number) {
     this.photoIndex += operator;
     this.foodService.getPlacePhoto(this.result.photo_references[this.photoIndex]).subscribe(photo => {
-      console.log(photo);
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
-        this.blobData = reader.result;
-      }, false);
-      if (photo) {
-        reader.readAsDataURL(photo);
-      }
+      this.blobData = photo;
+      // let reader = new FileReader();
+      // reader.addEventListener("load", () => {
+      //   this.blobData = reader.result;
+      // }, false);
+      // if (photo) {
+      //   reader.readAsDataURL(photo);
+      // }
     })
   }
 

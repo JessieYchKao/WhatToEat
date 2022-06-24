@@ -32,6 +32,7 @@ export class FoodServiceService {
   }
 
   getPlacePhoto(reference: string): Observable<any> {
-    return this.http.get(`random/place_photo/${reference}`, {responseType: 'blob' as 'json'});
+    // return this.http.get(`random/place_photo/${reference}`, {responseType: 'blob' as 'json'});
+    return this.http.get(`random/place_photo/${reference}`);
   }
 }

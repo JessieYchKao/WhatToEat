@@ -2,7 +2,7 @@
     <div class="flex-column align-items-center">
         <div class="big-circle" [@storePic]="filterOpen">
             <div class="left-arrow" *ngIf="photoIndex > 0" (click)="getPhoto(-1)"><i class="fa fa-chevron-left"></i></div>
-            <img class="photo" [src]="blobData"/>
+            <img class="photo" *ngIf="blobData" src="{{'data:image/png;base64,' + blobData}}"/>
             <div class="right-arrow" *ngIf="photoIndex < result?.photo_references?.length - 1" (click)="getPhoto(1)"><i class="fa fa-chevron-right"></i></div>
         </div>
         <div class="store flex-column align-items-center" [@storeInfo]="filterOpen">
