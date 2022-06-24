@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { RandomGeneratorComponent } from './random-generator/random-generator.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ClickOutsideDirective } from './directive/click-outside.directive';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,16 @@ import { ClickOutsideDirective } from './directive/click-outside.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BaseUrlInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

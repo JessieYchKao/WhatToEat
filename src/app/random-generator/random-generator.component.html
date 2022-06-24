@@ -1,16 +1,20 @@
 <div class="main-content">
     <div class="flex-column align-items-center">
-        <div class="big-circle" [@storePic]="filterOpen"></div>
+        <div class="big-circle" [@storePic]="filterOpen">
+            <div class="left-arrow" *ngIf="photoIndex > 0" (click)="getPhoto(-1)"><i class="fa fa-chevron-left"></i></div>
+            <img class="photo" [src]="blobData"/>
+            <div class="right-arrow" *ngIf="photoIndex < result?.photo_references?.length - 1" (click)="getPhoto(1)"><i class="fa fa-chevron-right"></i></div>
+        </div>
         <div class="store flex-column align-items-center" [@storeInfo]="filterOpen">
-            <div class="store-name">Store Name</div>
-            <div class="store-info">Store Info</div>
+            <div class="store-name" (click)="openWebsite(result?.website)">{{result?.name}}</div>
+            <div class="store-info">{{result?.address}}</div>
         </div>
         <div class="function-btn flex-row" [@functionBtn]="filterOpen">
             <div class="btn-responsive"><i class="fa fa-trash"></i></div>
-            <div class="btn-responsive"><i class="fa fa-random"></i></div>
+            <div class="btn-responsive" (click)="random()"><i class="fa fa-random"></i></div>
             <div class="btn-responsive" (click)="toggle()"><i class="fa fa-filter"></i></div>
         </div>
-        <div class="filter-options flex-column align-items-center">
+        <div class="filter-options flex-column align-items-center" *ngIf="filterOpen === 'expand'">
             <div class="option flex-row align-items-center" *ngFor="let option of foodOptions">
                 <div class="option-info flex-column">
                    <div class="option-name">{{option.type}}</div>

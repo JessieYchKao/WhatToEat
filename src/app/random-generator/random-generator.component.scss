@@ -32,9 +32,9 @@
 .filter-options {
     width: 100%;
     margin-top: -6rem;
-    height: calc(100vh - 36rem);
-    overflow-y: auto;
-    overflow-x: hidden;
+    // height: calc(100vh - 36rem);
+    // overflow-y: auto;
+    // overflow-x: hidden;
     padding: 0 1.1rem;
     .option {
         width: 100%;
@@ -56,14 +56,30 @@
         }
     }
 }
+.photo {
+    width: 300px;
+}
 @include breakpoint-max($bp-small) {
     .filter-options {
-        height: calc(100vh - 18rem);
+        // height: calc(100vh - 18rem);
+    }
+    .photo {
+        max-width: 230px;
+        max-height: 230px;
     }
 }
 @include breakpoint-min-max($bp-small, $bp-large) {
     .filter-options {
-        height: calc(100vh - 27rem);
+        // height: calc(100vh - 27rem);
     }
 }
 
+.left-arrow {
+    position: relative;
+    left: -20px;
+}
+
+.right-arrow {
+    position: relative;
+    right: -20px;
+}

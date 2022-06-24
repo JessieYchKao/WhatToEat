@@ -4,6 +4,11 @@ export interface Option {
     choice: MainCategory | Country | FoodCategory | PriceRange | ServeType | OtherOptions;
 }
 
+export interface GeneratorPara {
+    option: OptionType;
+    choice: MainCategory | Country | FoodCategory | PriceRange | ServeType | OtherOptions;
+}
+
 export enum OptionType {
     /**main category: drink, breakfast, brunch, lunch, dinner, afternoon snacks, bedtime snacks, ... */
     mainCategory = 'mainCategory',

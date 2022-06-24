@@ -66,6 +66,8 @@ body {
 
 .main-content {
     padding: 10px 20px; //safe area
+    overflow-y: auto;
+    height: calc(var(--vh) - 80px);
 }
 
 
@@ -83,8 +85,8 @@ body {
 
 @include breakpoint-max($bp-small) {
     .big-circle {
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
     }
     .btn-responsive {
         padding: 5px;
