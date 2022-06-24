@@ -7,11 +7,11 @@ phases:
       - echo "Install all the dependencies..."
       - npm install
       - npm install -g @angular/cli@13.3.4
-    build:
-      commands:
-        - echo "Building Angular project..."
-        - ng build --prod
-    post_build:
-      commands:
-        - echo "Upload files to the S3 bucket"
-        - aws s3 sync dist/whatToEat/ s3://what-to-eat-angular --delete
+  build:
+    commands:
+      - echo "Building Angular project..."
+      - ng build --prod
+  post_build:
+    commands:
+      - echo "Upload files to the S3 bucket"
+      - aws s3 sync dist/whatToEat/ s3://what-to-eat-angular --delete
