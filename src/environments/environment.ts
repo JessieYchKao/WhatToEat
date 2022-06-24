@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  "apiUrl": "http://192.168.0.11:8000"
-  // "apiUrl": "https://rzerzls2o4.execute-api.ap-northeast-2.amazonaws.com/dev"
+  // "apiUrl": "http://192.168.0.11:8000"
+  "apiUrl": "https://rzerzls2o4.execute-api.ap-northeast-2.amazonaws.com/dev"
 };
 
 /*
