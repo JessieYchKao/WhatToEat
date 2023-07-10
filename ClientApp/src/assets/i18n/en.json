@@ -1,0 +1,50 @@
+{
+  "all": "All",
+  "mainCategory": {
+    "title": "Main Category",
+    "drink": "Drinks",
+    "breakfast": "Breakfast",
+    "brunch": "Brunch",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "afternoon": "Afternoon Tea",
+    "bedtime": "Bedtime Snacks"
+  },
+  "country": {
+    "title": "Country",
+    "chinese": "Chinese",
+    "korean": "Korean",
+    "japanese": "Japanese",
+    "thailand": "Thailand",
+    "usa": "American",
+    "italian": "Italian",
+    "maxico": "Maxico"
+  },
+  "foodType": {
+    "title": "Food Type",
+    "tea": "Tea",
+    "coffee": "Coffee",
+    "alcohol": "Alcohol",
+    "sweet": "Sweet",
+    "healthy": "Healthy",
+    "rice": "Rice",
+    "noodles": "Noodles",
+    "salad": "Salad",
+    "burger": "Burger",
+    "pizza": "Pizza",
+    "soup": "Soup",
+    "fried": "Fried",
+    "hotpot": "Hotpot"
+  },
+  "priceRange": {
+    "title": "Price Range",
+    "low": "Low",
+    "middle": "Middle",
+    "high": "High"
+  },
+  "serveType": {
+    "title": "Serve Type",
+    "forHere": "For Here",
+    "toGo": "To Go"
+  }
+}

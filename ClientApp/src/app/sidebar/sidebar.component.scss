@@ -1,0 +1,23 @@
+
+@import "../variable";
+@import "../mixin";
+
+.modal{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  opacity: 1;
+  .popup {
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+    .btn-responsive {
+      margin: 0.5rem 0px;
+      position: relative;
+      opacity: 1;
+
+    }
+  }
+
+}
+
