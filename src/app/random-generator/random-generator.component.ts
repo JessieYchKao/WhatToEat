@@ -1,99 +1,107 @@
+import { ChoiceCheckbox, Country, OtherOptions, PriceRange, ServeType } from './../interface/option';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, style, state, transition, animate, group } from '@angular/animations';
 import { DialogContent } from '../interface/dialogContent';
-import { GeneratorPara, MainCategory, Option, OptionType, OtherOptions } from '../interface/option';
+import { FoodType, GeneratorPara, MainCategory, Option, OptionType } from '../interface/option';
 import { FoodServiceService } from '../services/food-service.service';
-import { fromEvent, Observable, Subscription } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
+import { StoreDetail } from '../interface/store';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-random-generator',
   templateUrl: './random-generator.component.html',
   styleUrls: ['./random-generator.component.scss'],
   animations: [
-    trigger('storePic', [
-      state('close', style({ marginTop: '3rem', transformOrigin: 'center top', transform: 'scale(1)' })),
-      state('expand', style({ marginTop: '1rem', transformOrigin: 'center top', transform: 'scale(0.5)' })),
-      transition('close => expand', animate('300ms ease-in')),
-      transition('expand => close', animate('300ms ease-in')),
+    trigger('fadeInOut', [
+      transition(':enter',[
+        style({opacity: 0}),
+        animate('300ms 100ms ease-in', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('300ms ease-out', style({opacity: 0}))
+      ]),
     ]),
-    trigger('storeInfo', [
-      state('close', style({ display: 'flex' })),
-      state('expand', style({ display: 'none' })),
-      transition('expand => close', animate('300ms ease-in')),
-      transition('expand => close', animate('100ms')),
+    trigger('fadeInOutWithSlide', [
+      transition(':enter',[
+        style({opacity: 0}),
+        animate('300ms 100ms ease-in', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('300ms ease-out', style({opacity: 0}))
+      ]),
     ]),
-    trigger('functionBtn', [
-      state('close', style({ transform: 'translateY(0)' })),
-      state('expand', style({ transform: 'translateY(-250%)' })),
-      transition('close => expand', animate('300ms ease-in')),
-      transition('expand => close', animate('300ms ease-in')),
+    trigger('optionSlide', [
+      transition(':enter',[
+        style({transform: 'translateY(10px)'}),
+        animate('300ms 100ms ease-in', style({transform: 'translateY(0)'}))
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('50ms ease-out', style({opacity: 0}))
+      ]),
     ])
   ]
 })
 export class RandomGeneratorComponent implements OnInit {
-  filterOpen: string = 'close';
+  isFilter: boolean = false;
   dialogContent: DialogContent = {
     title: '',
-    visible: false,
-    type: {
-      name: '',
-      type: OptionType.mainCategory,
-      choice: OtherOptions.all
-    }
+    visible: false
   };
 
-  foodOptions: Option[] = [];
+  foodOptions: Option[];
+
   blobData: any;
   photoIndex: number = 0;
-  result: any;
+  result: StoreDetail;
+
+  env = environment;
 
   constructor(
     private foodService: FoodServiceService,
-    private _sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-    this.getOptions();
-  }
-
-  getOptions() {
-    this.foodService.getFoodOptions().subscribe(res => {
-      this.foodOptions = res;
-    })
+    this.foodOptions = this.foodService.foodOptions;
   }
 
   toggle() {
-    this.filterOpen = this.filterOpen === 'close' ? 'expand' : 'close';
+    this.isFilter = !this.isFilter;
   }
 
   random() {
-    const para: GeneratorPara[] = [
-      {
-        option: OptionType.mainCategory,
-        choice: MainCategory.drink
+    console.log(this.foodOptions);
+    const para: GeneratorPara[] = this.foodOptions.map(x => {
+      return {
+        type: x.type,
+        choice: x.choice.filter(a => a.isChecked && a.choice !== 'all').map(a => {
+          if (x.type === OptionType.mainCategory) {
+            return MainCategory[a.choice as MainCategory];
+          } else if (x.type === OptionType.foodType) {
+            return FoodType[a.choice as FoodType];
+          } else if (x.type === OptionType.country) {
+            return Country[a.choice as Country];
+          } else if (x.type === OptionType.priceRange) {
+            return PriceRange[a.choice as PriceRange];
+          } else if (x.type === OptionType.serveType) {
+            return ServeType[a.choice as ServeType];
+          }
+          return a.choice;
+        })
       }
-    ]
+    })
+
     this.foodService.generate(para).subscribe(res => {
-      this.result = res;
       this.photoIndex = 0;
-      this.getPhoto(0);
-      this.filterOpen = 'close';
+      this.result = res;
+      this.isFilter = false;
     });
   }
 
   getPhoto(operator: number) {
     this.photoIndex += operator;
-    this.foodService.getPlacePhoto(this.result.photo_references[this.photoIndex]).subscribe(photo => {
-      this.blobData = photo;
-      // let reader = new FileReader();
-      // reader.addEventListener("load", () => {
-      //   this.blobData = reader.result;
-      // }, false);
-      // if (photo) {
-      //   reader.readAsDataURL(photo);
-      // }
-    })
   }
 
   openDialog(option: Option) {
@@ -103,5 +111,33 @@ export class RandomGeneratorComponent implements OnInit {
 
   openWebsite(link: string) {
     window.open(link, '_blank');
+  }
+
+  clear() {
+    this.foodOptions.forEach(x => {
+      x.choice.forEach(y => y.isChecked = false)
+    });
+    this.result = {} as StoreDetail;
+  }
+
+  optionOnClick(choice: ChoiceCheckbox, option?: Option, ) {
+    // all option triggered
+    if (choice.choice === 'all') {
+      if (choice.isChecked) {
+        option?.choice.forEach(e => {
+          e.isChecked = true;
+        });
+      } else {
+        option?.choice.forEach(e => {
+          e.isChecked = false;
+        });
+      }
+    } else { // Detect if all options are selected
+      if (option?.choice.every(x => x.choice === 'all' || x.isChecked)) {
+        option.choice[0].isChecked = true;
+      } else if (option?.choice.find(x => x.choice !== 'all' && !x.isChecked)) {
+        option.choice[0].isChecked = false;
+      }
+    }
   }
 }

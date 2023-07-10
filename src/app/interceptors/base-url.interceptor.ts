@@ -15,7 +15,11 @@ export class BaseUrlInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const apiReq = request.clone({ url: `${environment.apiUrl}/${request.url}`});
-    return next.handle(apiReq);
+    console.log(request);
+    if (!request.url.includes('assets/i18n')) {
+      const apiReq = request.clone({ url: `${environment.apiUrl}/${request.url}`});
+      return next.handle(apiReq);
+    }
+    return next.handle(request);
   }
 }

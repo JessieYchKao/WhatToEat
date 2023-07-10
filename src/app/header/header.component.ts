@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  sidebarContent = {
+    visible: false
+  };
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openSidebar() {
+    this.sidebarContent.visible = !this.sidebarContent.visible;
   }
 
 }

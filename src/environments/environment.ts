@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  // "apiUrl": "http://192.168.0.11:8000"
-  "apiUrl": "https://rzerzls2o4.execute-api.ap-northeast-2.amazonaws.com/dev"
+  "apiUrl": "http://localhost:5001",
+  "googleApiKey": "AIzaSyC5jO39cyFb2vMOvm-TWFvmT393Eu5b0P4"
+  // "apiUrl": "https://rzerzls2o4.execute-api.ap-northeast-2.amazonaws.com/dev"
 };
 
 /*

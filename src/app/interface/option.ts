@@ -1,86 +1,97 @@
 export interface Option {
     name?: string;
     type: OptionType;
-    choice: MainCategory | Country | FoodCategory | PriceRange | ServeType | OtherOptions;
+    choice: ChoiceCheckbox[];
 }
 
 export interface GeneratorPara {
-    option: OptionType;
-    choice: MainCategory | Country | FoodCategory | PriceRange | ServeType | OtherOptions;
+    type: OptionType;
+    choice: (MainCategory | Country | FoodType | PriceRange | ServeType | OtherOptions | OtherOptions | string)[];
+}
+
+export interface ChoiceCheckbox {
+  choice: MainCategory | Country | FoodType | PriceRange | ServeType | OtherOptions | string;
+  isChecked: boolean;
 }
 
 export enum OptionType {
     /**main category: drink, breakfast, brunch, lunch, dinner, afternoon snacks, bedtime snacks, ... */
-    mainCategory = 'mainCategory',
+    mainCategory = 1,
     /**country: chinese, korean, japanese, thailand, ... */
-    country = 'country',
-    /**food category: (based on different main category) */
-    foodCategory = 'foodCategory',
+    country,
+    /**food type: (based on different main category) */
+    foodType,
     /**price range */
-    priceRange = 'priceRange',
+    priceRange,
     /**serve type: eat there or to go */
-    serveType = 'serveType',
+    serveType,
 }
 
 export enum OtherOptions {
-    all = ''
+    all = 0
 }
 
+// Multiple choices
 export enum MainCategory {
-    drink = 'drink',
-    breakfast = 'breakfast',
-    brunch = 'brunch',
-    lunch = 'lunch',
-    dinner = 'dinner',
-    afternoon = 'afternoon',
-    bedtime = 'bedtime'
-}
-export enum Country {
-    chinese = 'chinese', 
-    korean = 'korean', 
-    japanese = 'japanese', 
-    thailand = 'thailand',
-    us = 'us',
-    italian = 'italian',
-    maxico = 'maxico'
-}
-export enum FoodCategory {
-    /**drink */
-    tea = 'tea',
-    /**drink */
-    coffee = 'coffee',
-    /**drink */
-    alcohol = 'alcohol',
-    /**afternoon、bedtime */
-    sweet = 'sweet',
-    /**afternoon、bedtime */
-    savoury = 'savoury',
-    /**brunch、lunch、dinner、bedtime */
-    healthy = 'healthy',
-    /**brunch、lunch、dinner、bedtime */
-    rice = 'rice',
-    /**brunch、lunch、dinner、bedtime */
-    noodles = 'noodles',
-    /**brunch、lunch、dinner、bedtime */
-    salad = 'salad',
-    /**brunch、lunch、dinner、bedtime */
-    burger = 'burger',
-    /**brunch、lunch、dinner、bedtime */
-    pizza = 'pizza',
-    /**brunch、lunch、dinner、bedtime */
-    soup = 'soup',
-    /**brunch、lunch、dinner、bedtime */
-    fried = 'fried',
-    /**lunch、dinner*/
-    hotpot = 'hotpot'
+    drink = 1,
+    breakfast = 2,
+    brunch = 3,
+    lunch = 4,
+    dinner = 5,
+    afternoon = 6,
+    bedtime = 7
 }
 
-export enum PriceRange {
-    low = 'low',
-    middle = 'middle',
-    high = 'high'
+// Single Choice
+export enum Country {
+    chinese = 1,
+    korean,
+    japanese,
+    thailand,
+    usa,
+    italian,
+    maxico
 }
+
+// Single Choice
+export enum FoodType {
+    /**drink */
+    tea = 1,
+    /**drink */
+    coffee,
+    /**drink */
+    alcohol,
+    /**afternoon、bedtime */
+    sweet,
+    /**brunch、lunch、dinner、bedtime */
+    healthy,
+    /**brunch、lunch、dinner、bedtime */
+    rice,
+    /**brunch、lunch、dinner、bedtime */
+    noodles,
+    /**brunch、lunch、dinner、bedtime */
+    salad,
+    /**brunch、lunch、dinner、bedtime */
+    burger,
+    /**brunch、lunch、dinner、bedtime */
+    pizza,
+    /**brunch、lunch、dinner、bedtime */
+    soup,
+    /**brunch、lunch、dinner、bedtime */
+    fried,
+    /**lunch、dinner*/
+    hotpot
+}
+
+// Single Choice
+export enum PriceRange {
+    low = 1,
+    middle = 2,
+    high = 3
+}
+
+// Single Choice
 export enum ServeType {
-    eatThere = 'eatThere',
-    toGo = 'toGo'
+    forHere = 1,
+    toGo
 }
