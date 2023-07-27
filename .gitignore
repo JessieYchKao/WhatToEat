@@ -1,6 +1,6 @@
-.vs/
+/.vs/
 
-WhatToEatAPI/bin/
+/WhatToEatAPI/bin
 
-WhatToEatAPI/obj/
+/WhatToEatAPI/obj
 
