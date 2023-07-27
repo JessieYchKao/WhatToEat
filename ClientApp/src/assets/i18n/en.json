@@ -1,4 +1,5 @@
 {
+  "title": "What to eat?",
   "all": "All",
   "mainCategory": {
     "title": "Main Category",
@@ -46,5 +47,10 @@
     "title": "Serve Type",
     "forHere": "For Here",
     "toGo": "To Go"
+  },
+  "settings": {
+    "languages": "Languages",
+    "english": "English",
+    "chinese": "Chinese"
   }
 }

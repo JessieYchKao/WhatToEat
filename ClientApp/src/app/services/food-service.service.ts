@@ -70,13 +70,10 @@ export class FoodServiceService {
   }
 
   generate(para: GeneratorPara[]): Observable<StoreDetail> {
-    // return this.http.post('random', para);
     return this.http.post<StoreDetail>('Random', para);
-    // return this.http.get('dev');
   }
 
   getPlacePhoto(reference: string): Observable<any> {
-    // return this.http.get(`random/place_photo/${reference}`, {responseType: 'blob' as 'json'});
     return this.http.get(`random/place_photo/${reference}`);
   }
 }

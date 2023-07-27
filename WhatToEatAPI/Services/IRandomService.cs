@@ -4,6 +4,6 @@ namespace WhatToEatAPI.Services
 {
     public interface IRandomService
     {
-        Store GetStores(RandomPara[] para);
+        Stores GetStores(RandomPara[] para);
     }
 }

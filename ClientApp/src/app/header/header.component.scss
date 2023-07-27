@@ -1,15 +1,28 @@
 @import "../variable";
 
 .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    .title {
-        color: $main-grey;
-        font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  justify-content: space-between;
+
+  .title {
+    color: $main-grey;
+    font-size: 24px;
+  }
+
+  .menu {
+    margin-right: 5px;
+
+    .modal {
+      position: absolute;
+      .popup {
+        .btn-responsive {
+          margin: 0.5rem 0px;
+          position: relative;
+          opacity: 1;
+        }
+      }
     }
-    .menu {
-      margin-right: 5px;
-    }
+  }
 }

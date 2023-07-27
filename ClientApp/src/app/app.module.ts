@@ -10,7 +10,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ClickOutsideDirective } from './directive/click-outside.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SettingsComponent } from './settings/settings.component';
 import { OptionNamePipe } from './pipes/option-name.pipe';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -27,7 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
     RandomGeneratorComponent,
     DialogComponent,
     ClickOutsideDirective,
-    SidebarComponent,
+    SettingsComponent,
     OptionNamePipe,
   ],
   imports: [

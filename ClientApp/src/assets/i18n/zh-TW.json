@@ -1,0 +1,56 @@
+{
+  "title": "吃甚麼?",
+  "all": "全選",
+  "mainCategory": {
+    "title": "主類別",
+    "drink": "飲料",
+    "breakfast": "早餐",
+    "brunch": "早午餐",
+    "lunch": "午餐",
+    "dinner": "晚餐",
+    "afternoon": "下午茶",
+    "bedtime": "宵夜"
+  },
+  "country": {
+    "title": "國家",
+    "chinese": "台式",
+    "korean": "韓式",
+    "japanese": "日式",
+    "thailand": "泰式",
+    "usa": "美式",
+    "italian": "義式",
+    "maxico": "墨西哥式"
+  },
+  "foodType": {
+    "title": "食物種類",
+    "tea": "茶",
+    "coffee": "咖啡",
+    "alcohol": "酒精",
+    "sweet": "甜食",
+    "healthy": "健康輕食",
+    "rice": "飯",
+    "noodles": "麵",
+    "salad": "沙拉",
+    "burger": "漢堡",
+    "pizza": "比薩",
+    "soup": "湯",
+    "fried": "油炸",
+    "hotpot": "火鍋"
+  },
+  "priceRange": {
+    "title": "價錢範圍",
+    "low": "低",
+    "middle": "中",
+    "high": "高"
+  },
+  "serveType": {
+    "title": "外帶內用",
+    "forHere": "內用",
+    "toGo": "外帶"
+  },
+  "settings": {
+    "languages": "語言",
+    "english": "英文",
+    "chinese": "中文"
+  }
+}

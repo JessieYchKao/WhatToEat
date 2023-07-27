@@ -8,7 +8,7 @@ namespace WhatToEatAPI.Models
         [Key]
         [Column("type_id")]
         public int TypeId { get; set; }
-        [Column("type_name")]
+        [Column("name")]
         public string TypeName { get; set; }
 
     }

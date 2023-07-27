@@ -16,16 +16,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Connect to Azure SQL Server
-var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+string connectionString = builder.Configuration.GetConnectionString("MYSQL_CONNECTION_STRING");
 // Db Context
-builder.Services.AddDbContext<StoreDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<StoresDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddDbContext<OptionTypeDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddDbContext<FoodTypeDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddDbContext<CategoryDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 // DI
@@ -39,8 +39,12 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(builder =>
     {
         builder.WithOrigins("http://localhost:4200").AllowAnyHeader();
+        builder.WithOrigins("http://192.168.1.244:4200").AllowAnyHeader();
+        //builder.AllowAnyOrigin().AllowAnyHeader();
     });
 });
+
+builder.WebHost.UseUrls("http://192.168.1.244:5000");
 
 var app = builder.Build();
 

@@ -27,6 +27,7 @@ body {
 
 .btn-responsive {
     color: $main-grey;
+    background-color: white;
     border-radius: 50%;
     padding: 5px;
     width: 80px;
@@ -68,7 +69,12 @@ body {
 .main-content {
     padding: 10px 20px; //safe area
     overflow-y: auto;
+    overflow-x: hidden;
     // height: calc(var(--vh) - 80px);
+    // height: calc(100vh - 100px);
+    // iphone 14 max
+    // height: calc(100vh - 160px);
+    height: 100dvh;
 }
 
 

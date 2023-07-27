@@ -6,11 +6,11 @@ namespace WhatToEatAPI.Services
 {
     public class RandomService : IRandomService
     {
-        private readonly StoreDbContext _storeDbContext;
+        private readonly StoresDbContext _storeDbContext;
         private readonly OptionTypeDbContext _optionTypeDbContext;
         private readonly CategoryDbContext _categoryDbContext;
         private readonly FoodTypeDbContext _foodtypeDbContext;
-        public RandomService(StoreDbContext storeDbContext, OptionTypeDbContext optionTypeDbContext, CategoryDbContext categoryDbContext, FoodTypeDbContext foodtypeDbContext)
+        public RandomService(StoresDbContext storeDbContext, OptionTypeDbContext optionTypeDbContext, CategoryDbContext categoryDbContext, FoodTypeDbContext foodtypeDbContext)
         {
             _storeDbContext = storeDbContext;
             _optionTypeDbContext = optionTypeDbContext;
@@ -18,9 +18,9 @@ namespace WhatToEatAPI.Services
             _foodtypeDbContext = foodtypeDbContext;
         }
 
-        public Store GetStores(RandomPara[] para)
+        public Stores GetStores(RandomPara[] para)
         {
-            IQueryable<Store> storeData = _storeDbContext.Store;
+            IQueryable<Stores> storeData = _storeDbContext.Stores;
             List<OptionType> optionTypes = _optionTypeDbContext.OptionType.ToList();
             foreach (var option in para)
             {
@@ -50,7 +50,7 @@ namespace WhatToEatAPI.Services
                     }
                 }
             }
-            List<Store> result = storeData.ToList();
+            List<Stores> result = storeData.ToList();
             var randomResult = from r in result orderby Guid.NewGuid() ascending select r;
             return randomResult.ToList()[0];
         }

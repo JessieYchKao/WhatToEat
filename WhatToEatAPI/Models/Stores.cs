@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WhatToEatAPI.Models
 {
-    public class Store
+    public class Stores
     {
         [Key]
         [Column("id")]

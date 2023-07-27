@@ -1,0 +1,11 @@
+<div class="content">
+  <div class="title">{{'settings.languages' | translate}}</div>
+  <div class="lang-box">
+    <div class="option" [ngClass]="{'selected': currentLang === 'en'}" (click)="changeLang('en')">{{'settings.english' |translate}}
+      <img src="../../assets/usa.png" alt="USA">
+    </div>
+    <div class="option" [ngClass]="{'selected': currentLang === 'zh-TW'}" (click)="changeLang('zh-TW')">{{'settings.chinese' |
+      translate}} <img src="../../assets/tw.png" alt="Taiwan"></div>
+  </div>
+
+</div>

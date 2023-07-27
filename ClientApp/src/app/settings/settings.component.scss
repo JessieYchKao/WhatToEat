@@ -1,0 +1,44 @@
+@import "../variable";
+@import "../mixin";
+
+
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px 20px;
+  box-shadow: $main-grey -2px 1px 5px;
+  border-radius: 10px;
+  padding: 10px;
+
+  .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    font-weight: 800;
+  }
+
+  .lang-box {
+    margin-top: 15px;
+
+    .option {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      border-radius: 10px;
+      img {
+        width: 40px;
+      }
+    }
+
+    .selected {
+      background-color: #003583e0;
+      color: white;
+      transition: all 0.6s ease-out;
+    }
+  }
+}

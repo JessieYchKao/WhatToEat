@@ -1,11 +1,15 @@
 <!-- header -->
 <div class="header">
-    <div></div>
-    <div class="title">What to eat?</div>
-    <div class="menu btn-responsive" (click)="openSidebar()"><i class="fa fa-bars"></i>
+  <div style="width: 50px;"></div>
+  <div class="title">{{'title' | translate}}</div>
+  <div class="menu">
+    <div class="btn-responsive inside-area" (click)="sidebarVisible = !sidebarVisible"><i class="fa fa-bars inside-area"></i></div>
+    <div [@slideDown] class="modal" *ngIf="sidebarVisible" [isModal]="false" (clickOutside)="sidebarVisible = false">
+      <div class="popup">
+        <div class="btn-responsive"><i class="fa fa-home" (click)="route('')"></i></div>
+        <div class="btn-responsive"><i class="fa fa-gear" (click)="route('settings')"></i></div>
+      </div>
     </div>
+  </div>
 </div>
-
-<app-sidebar [content]="sidebarContent"></app-sidebar>
-
 

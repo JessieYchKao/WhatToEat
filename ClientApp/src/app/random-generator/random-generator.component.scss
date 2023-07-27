@@ -5,16 +5,14 @@
 
 .big-circle {
   margin-top: 3rem;
-  transform-origin: center top;
-  transform: scale(1);
   transition: all ease-in 300ms;
 }
 
 .expand {
   .big-circle {
     margin-top: 1rem;
-    transform-origin: center top;
-    transform: scale(.65);
+    width: 180px;
+    height: 180px;
   }
   .store {
     height: 0;
@@ -30,7 +28,6 @@
 
 .filter-btn {
   position: relative;
-  top: -150px;
   margin: 10px 0px;
   width: 40rem;
   justify-content: space-around;
@@ -63,7 +60,6 @@
 .filter-options {
     width: 100%;
     position: relative;
-    top: -150px;
     padding: 0 1.1rem;
     .option {
         width: 100%;
